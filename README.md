@@ -1,3 +1,4 @@
+[Removed some hacks :p ]
 #brightness
 use: brightness $number
 0<$number<100 set brightness to $number %
