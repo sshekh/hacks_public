@@ -1,0 +1,34 @@
+xmms2 stop
+num=$(ls /media/windows/)
+if [ -z "$num" ]
+then
+	windows_mount
+fi
+#xmms2 playlist list
+(xmms2 playlist list) > /tmp/xmms2_list
+
+key=1
+while true; do
+num=$(sed $key'q;d' /tmp/xmms2_list)
+if [ -z "$num" ]
+then
+	break
+else
+	echo "["$key"] "$num
+fi
+key=$[$key + 1]
+done
+
+read -s -n 1 key
+if [[ $key = "" ]]; then 
+    xmms2 list
+else
+	num=$(sed $key'q;d' /tmp/xmms2_list)
+	xmms2 playlist switch $num
+	xmms2 list
+fi
+read key
+xmms2 jump $key
+xmms2 play
+xmms2 list
+rm /tmp/xmms2_list

@@ -1,0 +1,36 @@
+#!/bin/bash
+reach=1373877033
+now=$(date +"%s")
+left=$(($reach-$now))
+left=$(($left/3600))
+echo $left "hours to go..."
+echo ""
+
+##three=5
+#one=3
+#day=$(date +"%u")
+#line=$(($day*$three))
+#line=$(($line-$one))
+#echo $line
+#echo "Today... " \($(date +"%a")\)
+#num=$(sed $line'q;d' /home/rachit/hacks/mess\ menu\ from\ doc)
+#echo $num
+#num=$(sed $((line+1))'q;d' /home/rachit/hacks/mess\ menu\ from\ doc)
+#echo $num
+#num=$(sed $((line+2))'q;d' /home/rachit/hacks/mess\ menu\ from\ doc)
+#echo $num
+#echo ""
+#echo "Tommorow..."
+#line=$(($line+$three))
+#if [ $line -gt 35 ]
+#then
+#line=$(($line-35))
+#fi
+#num=$(sed $line'q;d' /home/rachit/hacks/mess\ menu\ from\ doc)
+#echo $num
+#num=$(sed $((line+1))'q;d' /home/rachit/hacks/mess\ menu\ from\ doc)
+#echo $num
+#num=$(sed $((line+2))'q;d' /home/rachit/hacks/mess\ menu\ from\ doc)
+#echo $num
+
+#cat /home/rachit/hacks/mess\ menu\ from\ doc

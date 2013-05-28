@@ -1,0 +1,6 @@
+#!/bin/bash
+kill $(ps | grep "play" | cut -d"p" -f1)
+kill $(ps | grep "callwhile" | cut -d"p" -f1)
+kill $(ps | grep "gettitle" | cut -d"p" -f1)
+kill $(ps | grep "myplay" | cut -d"p" -f1)
+echo -ne '\033]0;'Termianl'\007'

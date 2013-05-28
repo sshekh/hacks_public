@@ -1,0 +1,18 @@
+#!/bin/bash
+play $1 &>/tmp/myplay_out&
+echo -ne '\033]0;'$1'\007'
+~/hacks/myplay_files/callwhile&
+sleep 1
+~/hacks/myplay_files/gettitle < /tmp/myplay_out&
+sleep 2
+kill $(ps | grep "play" | cut -d"p" -f1)      
+kill $(ps | grep "callwhile" | cut -d"p" -f1)
+kill $(ps | grep "gettitle" | cut -d"p" -f1)
+echo -ne '\033]0;'Termianl'\007'
+#while [ 1 -lt 9 ]
+#do
+#title=$(cat /tmp/termtitle)
+#echo -ne '\033]0;'$title'\007'
+#echo $title
+#done
+

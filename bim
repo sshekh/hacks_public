@@ -1,0 +1,11 @@
+#!/bin/bash
+a=$1
+if [ -f $a ];
+then
+       vim $a
+       exit
+fi
+echo "#!/bin/bash" > $a
+echo "" >> $a
+vim $a
+chmod 777 $a

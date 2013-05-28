@@ -1,0 +1,15 @@
+#echo "/*" > $1
+#figlet -f script tvanicraath >> $1
+#echo "*/" >> $1
+a=$1".cpp"
+if [ -f $a ];
+then
+   echo "File $a exists"
+	exit
+fi
+cat /home/rachit/coding/lib/template_linux.cpp > $a
+vim $a
+#g++ $a -o $a.out
+if [ -f $a.out ]; then
+	./$a.out
+fi

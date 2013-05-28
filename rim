@@ -1,0 +1,8 @@
+vim $1
+g++ $1 -o $1.out
+if [ -f $1.out ]; then
+	./$1.out
+fi
+echo ""
+read -e INPUT
+rim $1

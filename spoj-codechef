@@ -1,0 +1,21 @@
+#!/bin/bash
+if [ $1 ];
+then
+echo "$1 on spoj"
+user=$1
+else
+user="tvanicraath"
+fi
+arr=$(curl -s -S http://www.spoj.com/status/$user/signedlist/ | grep " AC " | cut -d "|" -f4 | awk '{ gsub(/ /, ""); sub(/\n+$/, ""); print }' | tr " " "\n")
+
+array=( easy medium hard extcontest )
+for i in "${array[@]}"
+do
+echo ".............$i............"
+curl -s -S http://www.codechef.com/problems/"$i" | grep "/submit/" | cut -d">" -f7 | cut -d"<" -f1 | sort > /tmp/chef
+for x in $arr
+do
+cat /tmp/chef | grep "$x\n"
+done	
+done
+

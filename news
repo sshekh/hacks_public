@@ -1,0 +1,28 @@
+#!/bin/bash
+cd ~/hacks/news_files
+if [ $1 ]
+then
+    while [ 1 -le 5 ]
+    do
+	wget -q --user-agent "Drupal (+http://drupal.org/)" "http://news.google.com/news?pz=1&q=$1&cf=all&output=rss"
+	mv ~/hacks/news_files/news* ~/hacks/news_files/out
+    cat out | tr '<' '\n<' | tr '>' '\n' | awk '/title/ { getline; print $0; }' | head -n 1
+    echo "--------------------------------------------"
+    cat out | tr '<' '\n<' | tr '>' '\n' | awk '/title/ { getline; print $0; }' | tail -n +5 | grep " " | awk -F, 'BEGIN{x=1}; {print "["x "] "$0; x++}' | awk '{ gsub(/&[a-z]*;/, ""); sub(/\n+$/, ""); print }'
+    cat out | tr '<' '\n<' | tr '>' '\n' | awk '/link/ { getline; print $0; }' | tail -n +4 | grep "http" | cut -d";" -f4 | cut -d"=" -f2 | awk '{ gsub(/https/, "http"); sub(/\n+$/, ""); print }' > /tmp/link
+    echo "--------------------------------------------"
+    read link
+    if [[ $link = "" ]]; then 
+            exit
+        else
+            addrs="$(cat /tmp/link | head -n $link | tail -1)"
+#            firefox -P default $addrs
+	    curl -s -S -A Mozilla $addrs | html2text | grep "[a-z]" | grep -v "\*" | grep -v "\[" | grep -v "javascript" | grep -v "_" 
+    fi
+done
+
+else
+	~/hacks/news_files/mynews_india
+	read f
+	~/hacks/news_files/mynews_world
+fi

@@ -1,0 +1,15 @@
+let a=49*$1
+
+if [ $a -gt "4882" ]; then
+	a=4882
+fi
+
+if [ $a -lt "300" ]; then
+	a=300
+fi
+
+echo $a | dd of=/sys/class/backlight/intel_backlight/brightness &> /dev/null
+b=$(cat /sys/class/backlight/intel_backlight/actual_brightness)
+let b=b*100
+let b=b/4882
+echo "Brightness set to $b%"

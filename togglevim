@@ -1,0 +1,10 @@
+#!/bin/bash
+
+file=~/.vimrc1
+
+if [ -f $file ];
+then
+    mv ~/.vimrc1 ~/.vimrc
+else
+    mv ~/.vimrc ~/.vimrc1
+fi

@@ -1,0 +1,3 @@
+xmms2 stop
+xmms2 info | grep "url" | cut -d"/" -f3- >> /media/downloads/songs_to_be_deleted
+list

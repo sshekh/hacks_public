@@ -1,0 +1,4 @@
+pdflatex ~/resume/master.tex
+mv master.pdf ~/Desktop/Rachit_Nimavat_Resume.pdf
+
+scp /home/rachit/Desktop/Rachit_Nimavat_Resume.pdf webhome:/www/nimavat/www/Rachit_Nimavat_Resume.pdf
